@@ -7,7 +7,7 @@ import { DNA } from "react-loader-spinner";
 
 function ListaProdutos() {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const [produtos, setProdutos] = useState<Produto[]>([]);
 
