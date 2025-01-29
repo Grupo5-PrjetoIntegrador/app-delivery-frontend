@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom'
+import Produto from '../../../models/Produto'
 
-function CardProdutos() {
+interface CardProdutosProps{
+    produto: Produto
+}
+
+function CardProdutos({ produto }: CardProdutosProps) {
     return (
         <div className='border-slate-900 border 
             flex flex-col rounded overflow-hidden justify-between'>

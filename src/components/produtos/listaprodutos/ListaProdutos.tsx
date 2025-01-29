@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import CardProdutos from "../cardprodutos/CardProdutos";
 import { useState, useEffect } from "react";
 import Produto from "../../../models/Produto";
@@ -7,7 +7,7 @@ import { DNA } from "react-loader-spinner";
 
 function ListaProdutos() {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const [produtos, setProdutos] = useState<Produto[]>([]);
 
@@ -16,8 +16,8 @@ function ListaProdutos() {
             await buscar('/produtos', setProdutos)
 
         } catch (error: any) {
-            if (error.toString().includes('403')) {
-                alert("Produto não encontrado")
+            if (error.toString().includes('404')) {
+                alert("Produto não encontrado!")
             }
         }
     }

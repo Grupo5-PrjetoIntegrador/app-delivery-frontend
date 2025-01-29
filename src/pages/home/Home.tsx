@@ -14,7 +14,7 @@ function Home() {
 
                         <div className="flex justify-around gap-4">
                             <div className='rounded text-orange-50
-                                            text-orange-50 border-orange-700 bg-orange-700 border-solid border-2 py-2 px-4 font-semibold'
+                                        border-orange-700 bg-orange-700 border-solid border-2 py-2 px-4 font-semibold'
                                 >
                                 Peça já!
                             </div>
