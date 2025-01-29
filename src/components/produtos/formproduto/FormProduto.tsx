@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthContext";
 import Produto from "../../../models/Produto";
 import Categoria from "../../../models/Categoria";
 import { buscar, atualizar, cadastrar } from "../../../services/Service";
@@ -13,56 +12,47 @@ function FormProduto() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [categorias, setCategorias] = useState<Categoria[]>([])
 
-    const [categoria, setCategoria] = useState<Categoria>({ id: 0, descricao: '', })
+    const [categoria, setCategoria] = useState<Categoria>({ id: 0, categoria: '', })
     const [produto, setProduto] = useState<Produto>({} as Produto)
 
     const { id } = useParams<{ id: string }>()
 
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const token = usuario.token
-
     async function buscarProdutoPorId(id: string) {
         try {
-            await buscar(`/produtos/${id}`, setProduto, {
-                headers: { Authorization: token }
-            })
+            await buscar(`/produtos/${id}`, setProduto)
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                handleLogout()
+                alert('Produto não encontrado.');
             }
         }
     }
 
     async function buscarCategoriaPorId(id: string) {
         try {
-            await buscar(`/categorias/${id}`, setCategoria, {
-                headers: { Authorization: token }
-            })
+            await buscar(`/categorias/${id}`, setCategoria)
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                handleLogout()
+                alert("Categoria não encontrado")
             }
         }
     }
 
     async function buscarCategorias() {
         try {
-            await buscar('/categorias', setCategorias, {
-                headers: { Authorization: token }
-            })
+            await buscar('/categorias', setCategorias)
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                handleLogout()
+                alert('Categoria não encontrada')
             }
         }
     }
 
-    useEffect(() => {
-        if (token === '') {
-            alert('Você precisa estar logado');
-            navigate('/');
-        }
-    }, [token])
+    // useEffect(() => {
+    //     if (token === '') {
+    //         alert('Você precisa estar logado');
+    //         navigate('/');
+    //     }
+    // }, [token])
 
     useEffect(() => {
         buscarCategorias()
@@ -84,7 +74,7 @@ function FormProduto() {
             ...produto,
             [e.target.name]: e.target.value,
             categoria: categoria,
-            usuario: usuario,
+            //usuario: usuario,
         });
     }
 
@@ -98,36 +88,24 @@ function FormProduto() {
 
         if (id !== undefined) {
             try {
-                await atualizar(`/produtos`, produto, setProduto, {
-                    headers: {
-                        Authorization: token,
-                    },
-                });
+                await atualizar(`/produtos`, produto, setProduto);
 
                 alert('Produto atualizado com sucesso')
 
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    handleLogout()
-                } else {
-                    alert('Erro ao atualizar o Produto')
+                    alert('Erro ao atualizar produto')
                 }
             }
 
         } else {
             try {
-                await cadastrar(`/produtos`, produto, setProduto, {
-                    headers: {
-                        Authorization: token,
-                    },
-                })
+                await cadastrar(`/produtos`, produto, setProduto)
 
                 alert('Produto cadastrado com sucesso');
 
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    handleLogout()
-                } else {
                     alert('Erro ao cadastrar o Produto');
                 }
             }
@@ -137,7 +115,7 @@ function FormProduto() {
         retornar()
     }
 
-    const carregandoCategoria = categoria.descricao === '';
+    const carregandoCategoria = categoria.categoria === '';
 
     return (
         <div className="container flex flex-col mx-auto items-center">
@@ -154,7 +132,7 @@ function FormProduto() {
                         name="titulo"
                         required
                         className="border-2 border-slate-700 rounded p-2"
-                        value={produto.titulo}
+                        value={produto.nome}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
@@ -166,7 +144,7 @@ function FormProduto() {
                         name="texto"
                         required
                         className="border-2 border-slate-700 rounded p-2"
-                        value={produto.texto}
+                        value={produto.descricao}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
@@ -179,7 +157,7 @@ function FormProduto() {
 
                         {categorias.map((categoria) => (
                             <>
-                                <option value={categoria.id} >{categoria.descricao}</option>
+                                <option value={categoria.id} >{categoria.categoria}</option>
                             </>
                         ))}
 
