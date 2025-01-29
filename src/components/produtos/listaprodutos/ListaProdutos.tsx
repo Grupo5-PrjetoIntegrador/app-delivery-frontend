@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import CardProdutos from "../cardprodutos/CardProdutos";
-import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { useState, useEffect } from "react";
 import Produto from "../../../models/Produto";
 import { buscar } from "../../../services/Service";
 import { DNA } from "react-loader-spinner";
@@ -12,30 +11,23 @@ function ListaProdutos() {
 
     const [produtos, setProdutos] = useState<Produto[]>([]);
 
-    const { usuario, handleLogout } = useContext(AuthContext);
-    const token = usuario.token;
-
     async function buscarProdutos() {
         try {
-            await buscar('/produtos', setProdutos, {
-                headers: {
-                    Authorization: token,
-                },
-            })
+            await buscar('/produtos', setProdutos)
 
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                handleLogout()
+                alert("Produto não encontrado")
             }
         }
     }
 
-    useEffect(() => {
-        if (token === '') {
-            alert('Você precisa estar logado')
-            navigate('/');
-        }
-    }, [token])
+    // useEffect(() => {
+    //     if (token === '') {
+    //         alert('Você precisa estar logado')
+    //         navigate('/');
+    //     }
+    // }, [token])
 
     useEffect(() => {
         buscarProdutos()
