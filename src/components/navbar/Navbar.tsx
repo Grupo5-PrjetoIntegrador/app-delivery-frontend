@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Navbar() {
     return (
         <>
@@ -5,14 +7,16 @@ function Navbar() {
             			   bg-orange-700 text-orange-50'>
             
                 <div className="container flex justify-between text-lg">
-                    Home
+                    <Link to='/home' className="text-3xl">Fast Feast</Link>
 
                     <div className='flex gap-4'>
-                        Restaurantes
-                        Seleção fit
-                        Categorias
-                        Perfil
-                        Sair
+
+                        <p>Restaurantes</p>
+                        <p>Seleção fit</p>
+                        <Link to='/categorias'>Categorias</Link>
+                        <Link to='/produtos'>Produtos</Link>
+                        <p>Perfil</p>
+                        <p>Sair</p>
                     </div>
                 </div>
             </div>

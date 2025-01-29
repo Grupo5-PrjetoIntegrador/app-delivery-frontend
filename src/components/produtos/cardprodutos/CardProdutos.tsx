@@ -19,10 +19,10 @@ function CardProdutos({produto}: CardProdutosProps) {
                     </h3>
                 </div>
                 <div className='p-4 '>
-                    <h4 className='text-lg font-semibold uppercase'>Título</h4>
-                    <p>Texto</p>
-                    <p>Categoria: </p>
-                    <p>Data: </p>
+                    <h4 className='text-lg font-semibold uppercase'>{produto.nome}</h4>
+                    <p>{produto.descricao}</p>
+                    <p>Categoria: {produto.categoria?.categoria}</p>
+                    <p>Quantidade: {produto.quantidade}</p>
                 </div>
             </div>
             <div className="flex">
