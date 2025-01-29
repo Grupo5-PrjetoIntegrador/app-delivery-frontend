@@ -1,9 +1,15 @@
+import Footer from './pages/components/footer/Footer';
+import Navbar from './pages/components/navbar/Navbar';
+import Home from './pages/home/Home';
+
 function App() {
-    return (
-      <h1>
-        Projeto App Delivery Front End
-      </h1>
-    )
+  return (
+    <>
+      <Navbar />
+      <Home />
+      <Footer />
+    </>
+  );
 }
 
-export default App
+export default App;
