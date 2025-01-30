@@ -1,4 +1,5 @@
-import { FacebookLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react'
+import { FacebookLogo, InstagramLogo, LinkedinLogo, GithubLogo } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
 
@@ -13,9 +14,12 @@ function Footer() {
                         </p>
                     <p className='text-lg font-thin'>Acesse nossas redes sociais</p>
                     <div className='flex gap-2'>
-                        <LinkedinLogo size={48} weight='bold' />
-                        <InstagramLogo size={48} weight='bold' />
-                        <FacebookLogo size={48} weight='bold' />
+                        <LinkedinLogo size={48} weight='bold' className='hover:text-yellow-500'/>
+                        <InstagramLogo size={48} weight='bold' className='hover:text-yellow-500'/>
+                        <FacebookLogo size={48} weight='bold' className='hover:text-yellow-500'/>
+                        <Link to='https://github.com/Grupo5-PrjetoIntegrador' className='hover:text-teal-900'>
+                            <GithubLogo size={48} weight='bold' />
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ const Saudaveis: React.FC = () => {
  
     return (
 <div className="container mx-auto p-6">
-<h1 className="text-3xl font-bold text-center mb-8">Produtos Saudáveis</h1>
+<h1 className="text-3xl font-bold text-center mb-8 text-orange-950">Produtos Saudáveis</h1>
             {produtos.length === 0 ? (
 <p className="text-center text-gray-500">Nenhum produto saudável encontrado.</p>
             ) : (
@@ -39,10 +39,10 @@ const Saudaveis: React.FC = () => {
                     {produtos.map((produto) => (
 <div
                             key={produto.id}
-                            className="border border-gray-200 rounded-lg shadow-md p-4 bg-white hover:shadow-lg transition-shadow"
+                            className="border border-orange-100 rounded-lg shadow-md p-4 bg-orange-100 hover:shadow-lg transition-shadow"
 >
-<h2 className="text-xl font-semibold text-gray-800">{produto.nome}</h2>
-<p className="text-gray-600 mt-2">{produto.descricao}</p>
+<h2 className="text-xl font-semibold text-orange-800">{produto.nome}</h2>
+<p className="text-orange-950 mt-2">{produto.descricao}</p>
 <p className="text-green-500 font-bold mt-4">R$ {produto.preco.toFixed(2)}</p>
 </div>
                     ))}

@@ -7,22 +7,24 @@ interface CardCategoriasProps {
 
 function CardCategorias({ categoria }: CardCategoriasProps) {
   return (
-    <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-      <header className="py-2 px-6 bg-gray-800 text-white font-bold text-2xl">
+    <div className="border border-orange-100 shadow-md flex flex-col rounded overflow-hidden justify-between max-h-80 bg-orange-100">
+      <header className="py-2 px-6 bg-orange-950 text-orange-50 font-bold text-2xl">
         Categoria
       </header>
-      <p className="p-8 text-3xl bg-slate-200 h-full">{categoria.categoria}</p>
+      <p className="p-8 text-3xl bg-orange-200 h-full">{categoria.categoria}</p>
 
       <div className="flex">
         <Link
           to={`/editarcategoria/${categoria.id}`}
-          className="w-full text-lavender-blush-white bg-rose-quartz hover:bg-lit-eggplant-purple flex items-center justify-center py-2"
+          className="w-full text-orange-950 bg-orange-200 hover:bg-orange-400 
+                    flex items-center justify-center py-2"
         >
           <button>Editar</button>
         </Link>
         <Link
           to={`/deletarcategoria/${categoria.id}`}
-          className="text-lavender-blush-white bg-red-900 hover:bg-red-800 w-full flex items-center justify-center"
+          className="text-white bg-red-600 
+                    hover:bg-red-700 w-full flex items-center justify-center"
         >
           <button>Deletar</button>
         </Link>

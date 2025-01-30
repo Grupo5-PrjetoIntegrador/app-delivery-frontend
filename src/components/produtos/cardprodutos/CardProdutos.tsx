@@ -7,18 +7,17 @@ interface CardProdutosProps{
 
 function CardProdutos({ produto }: CardProdutosProps) {
     return (
-        <div className='border-slate-900 border 
-            flex flex-col rounded overflow-hidden justify-between'>
+        <div className='border border-orange-100 shadow-md flex flex-col rounded overflow-hidden justify-between max-h-80 bg-orange-100'>
                 
             <div>
-                <div className="flex w-full bg-gray-700 py-2 px-4 items-center gap-4">
-                    <img src='https://i.imgur.com/pK6vSCy.png'
-                         className='h-12 rounded-full' alt="" />
-                    <h3 className='text-lg font-bold text-center uppercase text-slate-100'>
-                        Nome do Usuário
+                <div className="flex w-full bg-orange-200 py-2 px-4 items-center gap-4">
+                    <img src='https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20Delivery/logo.png?updatedAt=1738169812557'
+                         className='h-12 rounded-full' alt="Logo do App" />
+                    <h3 className='text-lg font-bold text-center uppercase text-orange-950'>
+                        Fast Feast
                     </h3>
                 </div>
-                <div className='p-4 '>
+                <div className='p-4 bg-orange-100'>
                     <h4 className='text-lg font-semibold uppercase'>{produto.nome}</h4>
                     <p>{produto.descricao}</p>
                     <p>Categoria: {produto.categoria?.categoria}</p>
@@ -27,12 +26,12 @@ function CardProdutos({ produto }: CardProdutosProps) {
             </div>
             <div className="flex">
                 <Link to={`/editarproduto/${produto.id}`}
-                	className='w-full text-slate-100 bg-gray-700 hover:bg-gray-800 
+                	className='w-full text-orange-950 bg-orange-200 hover:bg-orange-400 
                     flex items-center justify-center py-2'>
 	                <button>Editar</button>
                 </Link>
-                <Link to='' className='text-white bg-red-700 
-                    hover:bg-red-500 w-full flex items-center justify-center'>
+                <Link to={`/deletarproduto/${produto.id}`} className='text-white bg-red-600 
+                    hover:bg-red-700 w-full flex items-center justify-center'>
                     <button>Deletar</button>
                 </Link>
             </div>
