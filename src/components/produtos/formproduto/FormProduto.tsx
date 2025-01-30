@@ -29,7 +29,7 @@ function FormProduto() {
 
     async function buscarCategoriaPorId(id: string) {
         try {
-            await buscar(`/categorias/${id}`, setCategoria)
+            await buscar(`/categoria/${id}`, setCategoria)
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 alert("Categoria não encontrado")
@@ -39,7 +39,7 @@ function FormProduto() {
 
     async function buscarCategorias() {
         try {
-            await buscar('/categorias', setCategorias)
+            await buscar('/categoria', setCategorias)
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 alert('Categoria não encontrada')
@@ -93,7 +93,7 @@ function FormProduto() {
                 alert('Produto atualizado com sucesso')
 
             } catch (error: any) {
-                if (error.toString().includes('403')) {
+                if (error.toString().includes('404')) {
                     alert('Erro ao atualizar produto')
                 }
             }
@@ -105,7 +105,7 @@ function FormProduto() {
                 alert('Produto cadastrado com sucesso');
 
             } catch (error: any) {
-                if (error.toString().includes('403')) {
+                if (error.toString().includes('404')) {
                     alert('Erro ao cadastrar o Produto');
                 }
             }
@@ -149,18 +149,47 @@ function FormProduto() {
                     />
                 </div>
                 <div className="flex flex-col gap-2">
+                    <label htmlFor="titulo">Preço</label>
+                    <input
+                        type="number"
+                        placeholder="Preço"
+                        name="preco"
+                        required
+                        className="border-2 border-slate-700 rounded p-2"
+                        value={produto.preco}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="titulo">Quantidade</label>
+                    <input
+                        type="number"
+                        placeholder="Quantidade"
+                        name="quantidade"
+                        required
+                        className="border-2 border-slate-700 rounded p-2"
+                        value={produto.quantidade}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+                <div className="flex flex-col gap-2">
                     <p>Categoria do Produto</p>
-                    <select name="categoria" id="categoria" className='border p-2 border-slate-800 rounded'
+                    <select
+                        name="categoria"
+                        id="categoria"
+                        className="border p-2 border-slate-800 rounded"
                         onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
+                        defaultValue="" // Define a opção padrão selecionada
                     >
-                        <option value="" selected disabled>Selecione uma Categoria</option>
+                        <option value="" disabled>
+                            Selecione uma Categoria
+                        </option>
 
                         {categorias.map((categoria) => (
-                            <>
-                                <option value={categoria.id} >{categoria.categoria}</option>
-                            </>
+                            <option key={categoria.id} value={categoria.id}>
+                                {categoria.categoria}
+                            </option>
                         ))}
-
                     </select>
                 </div>
                 <button

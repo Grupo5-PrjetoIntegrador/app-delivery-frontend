@@ -7,14 +7,14 @@ import CardCategorias from "../cardcategorias/CardCategorias";
 
 function ListaCategorias() {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const [categorias, setCategorias] = useState<Categoria[]>([])
 
 
     async function buscarCategorias() {
         try {
-            await buscar('/categorias', setCategorias)
+            await buscar('/categoria', setCategorias)
         } catch (error: any) {
             if (error.toString().includes('404')) {
                 console.log('Categoria não encontrada!')

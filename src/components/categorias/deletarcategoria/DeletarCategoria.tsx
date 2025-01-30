@@ -15,7 +15,7 @@ function DeletarCategoria() {
 
     async function buscarPorId(id: string) {
         try {
-            await buscar(`/categorias/${id}`, setCategoria)
+            await buscar(`/categoria/${id}`, setCategoria)
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 alert('Categoria não encontrada!')
@@ -33,7 +33,7 @@ function DeletarCategoria() {
         setIsLoading(true)
 
         try {
-            await deletar(`/categorias/${id}`)
+            await deletar(`/categoria/${id}`)
 
             alert('Categoria apagada com sucesso')
 
