@@ -6,7 +6,7 @@ const Saudaveis: React.FC = () => {
     const [loading, setLoading] = useState(true);
  
     useEffect(() => {
-        const url = '/produtos/recomendados/saudaveis'; // Substitua pela URL do seu backend
+        const url = '/produtos/recomendados/saudaveis';
  
         const carregarProdutos = async () => {
             try {
