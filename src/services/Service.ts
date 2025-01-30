@@ -24,3 +24,13 @@ export const atualizar = async (url: string, dados: Object, setDados: Function) 
 export const deletar = async (url: string) => {
     await api.delete(url);
 }
+
+export const fetchSaudaveis = async (url: string, setDados: Function) => {
+    try {
+        const resposta = await api.get(url);
+        setDados(resposta.data);
+    } catch (error) {
+        console.error('Erro ao buscar produtos saudáveis:', error);
+        throw error;
+    }
+};

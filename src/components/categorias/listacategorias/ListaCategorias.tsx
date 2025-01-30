@@ -16,16 +16,16 @@ function ListaCategorias() {
         try {
             await buscar('/categorias', setCategorias)
         } catch (error: any) {
-            if (error.toString().includes('403')) {
-                console.log('Erro ao buscar categorias')
+            if (error.toString().includes('404')) {
+                console.log('Categoria não encontrada!')
             }
         }
     }
 
-    useEffect(() => {
-            alert('Você precisa estar logado!')
-            navigate('/')
-    })
+    // useEffect(() => {
+    //         alert('Você precisa estar logado!')
+    //         navigate('/')
+    // })
 
     useEffect(() => {
         buscarCategorias()    
