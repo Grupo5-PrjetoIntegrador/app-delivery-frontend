@@ -118,66 +118,66 @@ function FormProduto() {
     const carregandoCategoria = categoria.categoria === '';
 
     return (
-        <div className="container flex flex-col mx-auto items-center">
-            <h1 className="text-4xl text-center my-8">
+        <div className="container flex flex-col mx-auto items-center ">
+            <h1 className="text-4xl text-center my-8 text-orange-950">
                 {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
             </h1>
 
             <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovoProduto}>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Título do Produto</label>
+                    <label htmlFor="titulo">Nome:</label>
                     <input
                         type="text"
-                        placeholder="Titulo"
+                        placeholder="Digite aqui o nome do produto"
                         name="titulo"
                         required
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-orange-700 rounded p-2"
                         value={produto.nome}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Texto do Produto</label>
+                    <label htmlFor="titulo">Descrição:</label>
                     <input
                         type="text"
-                        placeholder="Texto"
+                        placeholder="Digite aqui a descrição do produto"
                         name="texto"
                         required
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-orange-700 rounded p-2"
                         value={produto.descricao}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Preço</label>
+                    <label htmlFor="titulo">Preço:</label>
                     <input
                         type="number"
-                        placeholder="Preço"
+                        placeholder="Digite aqui o preço do produto"
                         name="preco"
                         required
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-orange-700 rounded p-2"
                         value={produto.preco}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Quantidade</label>
+                    <label htmlFor="titulo">Quantidade:</label>
                     <input
                         type="number"
-                        placeholder="Quantidade"
+                        placeholder="Digite aqui a quantidade do produto"
                         name="quantidade"
                         required
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-orange-700 rounded p-2"
                         value={produto.quantidade}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <p>Categoria do Produto</p>
+                    <p>Categoria:</p>
                     <select
                         name="categoria"
                         id="categoria"
-                        className="border p-2 border-slate-800 rounded"
+                        className="border p-2 border-orange-800 rounded"
                         onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
                         defaultValue="" // Define a opção padrão selecionada
                     >
@@ -194,8 +194,8 @@ function FormProduto() {
                 </div>
                 <button
                     type='submit'
-                    className='rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800
-                               text-white font-bold w-1/2 mx-auto py-2 flex justify-center'
+                    className='rounded disabled:bg-orange-200 bg-orange-400 hover:bg-orange-800
+                               text-orange-50 font-bold w-1/2 mx-auto py-2 flex justify-center'
                     disabled={carregandoCategoria}
                 >
                     {isLoading ?

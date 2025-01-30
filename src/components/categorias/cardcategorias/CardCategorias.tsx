@@ -8,10 +8,10 @@ interface CardCategoriasProps {
 function CardCategorias({ categoria }: CardCategoriasProps) {
   return (
     <div className="border border-orange-100 shadow-md flex flex-col rounded overflow-hidden justify-between max-h-80 bg-orange-100">
-      <header className="py-2 px-6 bg-orange-950 text-orange-50 font-bold text-2xl">
+      <header className="py-2 px-6 bg-orange-900 text-orange-50 font-bold text-2xl">
         Categoria
       </header>
-      <p className="p-8 text-3xl bg-orange-200 h-full">{categoria.categoria}</p>
+      <p className="p-8 text-3xl bg-orange-100 h-full">{categoria.categoria}</p>
 
       <div className="flex">
         <Link
