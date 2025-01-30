@@ -22,10 +22,10 @@ function ListaCategorias() {
         }
     }
 
-    useEffect(() => {
-            alert('Você precisa estar logado!')
-            navigate('/')
-    })
+    // useEffect(() => {
+    //         alert('Você precisa estar logado!')
+    //         navigate('/')
+    // })
 
     useEffect(() => {
         buscarCategorias()    
